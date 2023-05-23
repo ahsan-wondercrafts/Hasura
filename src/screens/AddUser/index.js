@@ -3,17 +3,18 @@ import React, { useState } from 'react';
 import { useMutation, gql } from '@apollo/client';
 
 const ADD_USER = gql`
-mutation InsertUsers($name: String, $phone_no: numeric) {
-    insert_users(objects: {name: $name, phone_no: $phone_no}) {
+mutation InsertUsers($name: String, $phoneNo: String) {
+    insert_users(objects: {name: $name, phoneNo: $phoneNo}) {
       affected_rows
       returning {
         id
               name
+              phoneNo
               created_at
-              phone_no
       }
     }
   }
+      
 `;
 
 const AddUser = () => {
@@ -41,6 +42,8 @@ const AddUser = () => {
             });
 
             console.log('User added:', result);
+            setUsername('')
+            setPhoneNo('')
 
         } catch (error) {
 
