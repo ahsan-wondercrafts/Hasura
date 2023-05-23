@@ -1,0 +1,9 @@
+table:
+  name: months
+  schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - name

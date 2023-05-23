@@ -1,0 +1,29 @@
+table:
+  name: users
+  schema: public
+array_relationships:
+  - name: days_of_weeks
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: days_of_week
+          schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - created_at
+        - id
+        - name
+        - phone_no
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - id
+        - phone_no
+        - name
+        - created_at
+      filter: {}

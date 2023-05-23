@@ -1,0 +1,11 @@
+type Mutation {
+  InsertUsers(
+    phone_no: numeric
+    name: String
+  ): InsertUsersOutput
+}
+
+type InsertUsersOutput {
+  affected_rows: Int!
+}
+
